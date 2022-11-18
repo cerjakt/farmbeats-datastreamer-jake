@@ -12,7 +12,6 @@ class DataPublisher:
         data = self.__process_data(data)
         try:
             lock.acquire()
-            #with self.serial as serial:
             self.client.publish("test", data) 
             lock.release()
         except Exception as e:
