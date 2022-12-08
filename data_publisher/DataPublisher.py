@@ -1,12 +1,18 @@
 import threading
+import time
 import paho.mqtt.client as mqtt
 
 lock = threading.Lock()
 
 class DataPublisher:
     def __init__(self):
-        self.client = mqtt.Client("jcermak")
-        self.client.connect("172.22.32.140")
+        While True:
+            try:
+                self.client = mqtt.Client("jcermak")
+                self.client.connect("172.22.32.140")
+                break
+            except:
+                time.sleep(1)
 
     def send_data(self, data):
         data = self.__process_data(data)
